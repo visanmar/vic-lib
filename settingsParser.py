@@ -129,9 +129,6 @@ class SettingsParser():
             value = value.strip("'")
 
         return value
-        
-            
-
 
 
 class SettingsParserError(Exception):
