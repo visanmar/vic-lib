@@ -58,15 +58,11 @@ class SettingsParser():
         for line in settings:
             line = line.strip('\n').strip()
 
-            if line[0] == '#':
+            if not len(line) or line[0] == '#':
                 line_number += 1
                 continue
 
             line = re.sub('#+.*', '', line)
-
-            if not len(line):
-                line_number += 1
-                continue
 
             if line.find('=') < 0:
                 raise SettingsParserError(f"Settings parser error: line {line_number}, unrecognized setting.")
