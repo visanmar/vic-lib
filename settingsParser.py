@@ -85,7 +85,7 @@ class SettingsParser():
                 else:
                     self._settings[setting] = newValue
             else:
-                print(setting+':', newValue)
+                print(setting, '=', newValue)
 
             line_number += 1
 
@@ -99,13 +99,13 @@ class SettingsParser():
             if value == '()':
                 return tuple()
             
-            value = value.replace(' ', ',')
+            value = value.replace(' ', ',', 1)
             values = [x.strip() for x in value.split(',')]
 
             for index, val in enumerate(values):
                 if val.isdecimal():
                     values[index] = int(val)
-                elif val.replace('.','',1).isdigit():
+                elif val.replace('.', '', 1).isdigit():
                     values[index] = float(val)
                 else:
                     values[index] = val
